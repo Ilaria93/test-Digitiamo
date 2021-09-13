@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="container">
-        <div class="row">
+        <div class="row pb-5">
           <div class="col-12">
             <header class="text-center row">
                 <div class="title-page col-12 col order-2 col-md-12 order-md-1">
@@ -75,16 +75,18 @@ export default {
     methods:{
         sendRequest: function(){
           this.result = {};
+          const self = this;
           const sendDate = (new Date()).getTime();
-            axios({method: this.method, url: this.apiAddress,}).then((result) =>{
+            axios({method: self.method, url: self.apiAddress,}).then((result) =>{
                 console.log(result);
-                this.result= result;
+                self.result= result;
             const receiveDate = (new Date()).getTime();
             const responseTimeMs = receiveDate - sendDate;
-            this.result.responseTimeMs = responseTimeMs;
+            self.result.responseTimeMs = responseTimeMs;
             console.log(responseTimeMs);
             }).catch(error => {
-              this.result.status= error.response.status 
+              self.result.status= error.response.status 
+              self.$forceUpdate()
               
             });
         },

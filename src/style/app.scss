@@ -118,12 +118,17 @@ $mobile: 480px;
     @include score-inner(-85%, 34%, 150%, auto, auto);
     @include top-radius( 50%, 5%);
     @include bottom-radius(50%, 5%);
-    animation-name: ticker-mover-1;
+    
     animation-duration: 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-timing-function: linear;
 }
+
+.active .scorer-1-tick{
+    animation-name: ticker-mover-1;
+ }
+
 
 .ball-tick{
     @include score-inner(-91px, 0, 25px, 25px, auto);
