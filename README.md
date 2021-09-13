@@ -21,6 +21,7 @@ npm run lint
 ```
 ### How to use Json server
 ```
+npm install-g json-serve
 json-server --watch db.json
 ```
 
