@@ -19,7 +19,7 @@ npm run build
 ```
 npm run lint
 ```
-### Jason server
+### How to use Json server
 ```
 json-server --watch db.json
 ```
