@@ -1,7 +1,10 @@
 <template>
     <div class="time-speed-content " :class="this.swipeUp ?'active' : ''">
-        <div class="caret-up"></div>
-        <span  v-touch:swipe =" swipeHandler " > Swipe up </span >
+        <div class="caret-swipe shadow-effects">
+            <font-awesome-icon  :icon="['fas', 'angle-up']"/>
+            <span  v-touch:swipe =" swipeHandler " class="span-text"> Swipe {{this.swipeUp ?'down' : 'up'}} </span >
+            <font-awesome-icon  :icon="['fas', 'angle-down']" />
+        </div>
         <div class="time-analysis col-12">
             <h4>Time Analysis</h4>
             <div class="speed-up">
@@ -86,19 +89,14 @@ export default {
         swipeHandler: function(direction){
             if (direction =='top') {
                 this.swipeUp = true 
+
                 
             }else if (direction== 'bottom') {
                 this.swipeUp = false
                 
             }
- 
-            
-
             console.log(direction);
-
-
         }
-        
 
     },
     data(){
@@ -113,46 +111,54 @@ export default {
 <style lang = "scss" scoped>
     @import "../style/app.scss";
 
-        .caret-up {
+        .caret-swipe {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
             position: relative;
-            display: inline-block;
-            top: -35px;
+            visibility: hidden;
+            @media(max-width: $mobile){
+                visibility: visible;
             }
-
-            .caret-up:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-bottom: 20px solid #0045ff;
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
+            .span-text{
+                font-size: 18px;
+                color:$white;
             }
-
-            .caret-up:after {
-            content: '';
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            border-bottom: 16px solid #fff;
-            border-left: 16px solid transparent;
-            border-right: 16px solid transparent;
+            svg{
+                color: $blue
             }
+        }
+        .shadow-effects{
+            /*text-shadow: 2px 2px 5px $blue;*/
+            text-shadow: 1px 1px 2px $black, 0 0 25px $blue, 0 0 5px darkblue;
+            animation-name: lightening;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        @keyframes lightening {
+            0%{
+                opacity:1
+            }
+            100%{
+                opacity:0
+            }
+            
+        }
+        
 
         .time-speed-content{
             position: fixed;
             background: white;
-            top: calc(100% - 30px);
+            top: calc(100% - 43px);
             left:0;
             width: 100%;
-            min-height: 100vh;
+            height: 100vh;
             transition: all 1s ease;
             &.active{
-                top:0;
-            }
-
-            @media(max-width: $mobile){
-                display: block;
+                top: -13px;
             }
         }
 
@@ -162,9 +168,11 @@ export default {
         .speed-text{
             h3{
                 color: $speed-text;
+                margin:0;
             }
             p{
                 font-size: 15px;
+                margin:0;
             }
         }
         #result-time{
@@ -172,10 +180,10 @@ export default {
             font-weight: 600;
         }
         #number-6{
-            @include number-speed(absolute, 134px, 0, auto);
+            @include number-speed(absolute, 127px, -8px, auto);
         }
         #number-7{
-            @include number-speed(absolute, 45px, 30px, auto);
+            @include number-speed(absolute, 40px, 20px, auto);
             
         }
         #number-8{
