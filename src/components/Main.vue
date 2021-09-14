@@ -6,13 +6,13 @@
                     <h6>INFO</h6>
                 </div>
                 <div calss="info-api-elements">
-                    <h6 id="titile-info" >METHOD: {{result.config.method}} </h6>
+                    <h6 id="title-info" >METHOD: {{result.config.method}} </h6>
                 </div>
                 <div calss="info-api-elements">
-                    <h6 id="titile-info">URL: {{result.config.url}}</h6>
+                    <h6 id="title-info">URL: {{result.config.url}}</h6>
                 </div>
                 <div calss="info-api-elements">
-                    <h6 id="titile-info">REQUEST:{{result.request}}</h6>
+                    <h6 id="title-info">REQUEST:{{result.request}}</h6>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@ export default {
         height: 270px;
         margin-bottom: 30px;
 
-        @media(max-width:480px){
+        @media(max-width:$mobile){
             margin-bottom: 20px;
         }
     }                   
@@ -69,23 +69,39 @@ export default {
     }
     #title-column{
         padding: 10px;
+        h6{
+            @media(max-width:$mobile){
+                font-size: 13px;
+            }
+    
+        }
     }
-    #titile-info{
+    #title-info{
         font-weight: 600;
         background-color: $info;
         padding: 20px 10px;
         margin-bottom: 5px;
         cursor: pointer;
+        overflow: hidden;
+        @media(max-width:$mobile){
+            font-size: 13px;
+    
+        }
     }
     p{
         margin-bottom: 0!important;
     }
     .title-api-elements{
         padding: 0 10px;
+        h6{
+            @media(max-width:$mobile){
+            font-size: 13px;
+    
+            }
+        }
     }
     
     #api-elements{
-        
         h6{
             margin: 2px 0;
             background-color: $light-grey;
@@ -94,6 +110,10 @@ export default {
 
             &:hover{
                 background-color: $info-hover;
+            }
+            @media(max-width:$mobile){
+            font-size: 13px;
+    
             }
         }
     }

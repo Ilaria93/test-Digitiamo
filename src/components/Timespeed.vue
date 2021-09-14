@@ -150,6 +150,7 @@ export default {
         
 
         .time-speed-content{
+            overscroll-behavior: contain;
             position: fixed;
             background: white;
             top: calc(100% - 43px);
